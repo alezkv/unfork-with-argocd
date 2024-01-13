@@ -1,2 +1,2 @@
-podinfo:
+podinfo:  # Values for the sub-chart must be under its dependency name key
   replicaCount: 2
