@@ -1,0 +1,32 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: multiple-sources
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - chart: authentik
+      repoURL: https://charts.goauthentik.io
+      targetRevision: 2023.10.5
+      helm:
+        valueFiles:
+          - $values/apps/multiple-sources/values.yaml
+    - repoURL: https://github.com/alezkv/unfork-with-argocd
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/alezkv/unfork-with-argocd
+      path: apps/multiple-sources/resources/
+      targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: multiple-sources
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

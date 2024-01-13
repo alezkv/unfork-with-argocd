@@ -1,0 +1,11 @@
+---
+authentik:
+  secret_key: "!!!UNSECURE!!!"
+  postgresql:
+    password: "!!!UNSECURE!!!"
+
+postgresql:
+  enabled: true
+  postgresqlPassword: "!!!UNSECURE!!!"
+redis:
+  enabled: true
