@@ -1,5 +1,6 @@
 # unfork-with-argocd
-This repo is an article companion for [alezkv.pro/blog/unfork-with-argocd/](alezkv.pro/blog/unfork-with-argocd/)
+
+This repo is an article companion for [alezkv.pro/blog/unfork-with-argocd/](https://alezkv.pro/blog/unfork-with-argocd/)
 
 ## Setup local environment
 
@@ -36,7 +37,12 @@ Start port forwarding in background for ArgoCD web UI:
 kubectl -n argocd port-forward svc/argocd-server 8888:80 >/dev/null 2>&1 &
 ```
 
-It's could be required some times to hit refresh on root application
+Open browser and accept security warning:
+```
+open https://localhost:8888
+```
+
+It could be required sometimes to hit refresh on the root application.
 
 ## Clean up
 
